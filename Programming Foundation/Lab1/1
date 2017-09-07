@@ -1,0 +1,33 @@
+ *********************************************************************/
+ * File                 : 1.1Assignment.txt
+ * Author Name          : Avinash Ramesh
+ * Desc                 : Pseudo code to print the electricity bill.
+ * Version              : 1.0
+ * Last Modified Date   : 25-Aug-2017
+ *********************************************************************/
+BEGIN
+ 
+	DECLARE User_ID,Previous_Reading,Current_Reading,Fixed_Charge AS INTEGER
+	DECLARE User_NAME AS STRING
+	DECLARE Unit_Consumed, Net_Amount,NUM AS DECIMAL
+	INITIALIZE Fixed_Charge TO 100
+	INITIALIZE NUM TO 1.15
+	
+	DISPLAY "Enter the User ID"
+	ACCEPT User_ID
+	DISPLAY "Enter the user name"
+	ACCEPT User_NAME
+	DISPLAY "Enter LASt month reading"
+	ACCEPT Previous_Reading
+	DISPLAY "Enter Current month Reading"
+	ACCEPT Current_Reading
+	
+	Unit_Consumed = (Current_Reading-Previous_Reading)
+	Net_Amount = (Unit_Consumed * NUM + Fixed_Charge)
+	
+	DISPLAY "User ID is", User_ID
+	DISPLAY "USER NAME Is", User_NAME
+	DISPLAY "Total Unit Consumed is", Unit_Consumed
+	DISPLAY "Total amount to be paid is", Net_Amount
+	
+END
