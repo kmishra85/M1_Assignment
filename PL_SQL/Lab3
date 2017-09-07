@@ -1,0 +1,36 @@
+Lab 3
+
+3.1. Write a function to compute age.
+	The function should accept a date and return age in years.
+	
+SET SERVEROUTPUT ON; 
+DECLARE
+  A_dob        student_master.student_dob%TYPE;
+  
+  v_your_age   NUMBER(3, 1);
+BEGIN
+
+  select student_dob into A_dob from student_master
+          where student_code = 2;
+  v_your_age := TRUNC(MONTHS_BETWEEN(SYSDATE, A_dob))/12;  
+ -- v_your_age := FINDAGE(A_dob);
+  DBMS_OUTPUT.PUT_LINE ('Your age is ' || v_your_age);
+END;
+
+
+CREATE OR REPLACE FUNCTION FINDAGE(v_your_age IN DATE, AGE OUT DATE)
+ RETURN NUMBER IS
+ AGE NUMBER;
+ BEGIN
+ select TRUNC(MONTHS_BETWEEN(SYSDATE, A_dob))/12 into AGE from sysdate;
+ RETURN AGE;
+ END;
+ 
+anonymous block completed
+Your age is 23.8
+
+3.2 Write a procedure to find the manager of a staff.
+	Procedure should return the following – Staff_Code, Staff_Name, 
+	Dept_Code and Manager Name.
+	
+
