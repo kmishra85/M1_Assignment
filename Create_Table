@@ -1,0 +1,75 @@
+CREATE TABLE Emp (
+	Empno NUMBER(4) CONSTRAINT EMP_enum_PK1 PRIMARY KEY,
+	Ename VARCHAR2(10) CONSTRAINT ename_Constraint NOT NULL,
+	Job VARCHAR2(9),
+	Mgr NUMBER(4),
+	Hiredate Date,
+	Sal NUMBER(7,2),
+	Comm NUMBER(7,2),
+	Dept_code NUMBER(2),
+	 FOREIGN KEY (Dept_code) REFERENCES Department_Master(Dept_code)
+	);
+	
+	
+CREATE TABLE Designation_Master (
+	Design_code NUMBER(3) CONSTRAINT Desg_Master_PK PRIMARY KEY,
+	Design_name VARCHAR2(50)
+);
+
+CREATE TABLE Department_Master (
+	Dept_Code NUMBER(2) CONSTRAINT Dept_Master_PK PRIMARY KEY,
+	Dept_Name VARCHAR2(50)
+);
+
+CREATE TABLE Student_Master(
+	Student_Code NUMBER(6) CONSTRAINT Std_master_PK PRIMARY KEY,
+	Student_name VARCHAR2(50),
+	Dept_Code NUMBER(2),
+	Student_dob Date,
+	Student_Address VARCHAR2(240),
+  CONSTRAINT Std_deptCode_FK1 FOREIGN KEY (Dept_Code) REFERENCES Department_Master(Dept_code)
+);
+
+CREATE TABLE Student_Marks(
+	Student_Code NUMBER(6),
+	Student_Year NUMBER(4) CONSTRAINT Std_mark_PK PRIMARY KEY,
+	Subject1 NUMBER(3),
+	Subject2 NUMBER(3),
+	Subject3 NUMBER(3),
+	CONSTRAINT stdMarks_stdCode_FK FOREIGN KEY (Student_Code) REFERENCES Student_Master(Student_Code)
+);
+
+CREATE TABLE Staff_Master (
+	Staff_code NUMBER(8) CONSTRAINT Staff_PK PRIMARY KEY,
+	Staff_Name VARCHAR2(50) CONSTRAINT Staff_Name_Null NOT NULL,
+	Design_code NUMBER(3),
+	Dept_Code NUMBER(2),
+	Hiredate Date,
+	Staff_dob Date,
+	Staff_address VARCHAR2(240),
+	Mgr_code NUMBER(8),
+	Staff_sal NUMBER(10,2),
+  CONSTRAINT staff_DeptCode_FK FOREIGN KEY (Dept_Code) REFERENCES Department_Master(Dept_Code),
+  CONSTRAINT staff_DesginCode_FK FOREIGN KEY (Design_Code) REFERENCES Designation_Master(Design_Code)
+);
+
+
+
+CREATE TABLE Book_master(
+	Book_code Number(10) CONSTRAINT bookCode_PK PRIMARY KEY,
+	Book_Name VARCHAR2(50),
+	Book_pub_year Number(4),
+	Book_Name_pub_author VARCHAR2(50)
+);
+
+CREATE TABLE Book_Transactions(
+	Book_code Number(10),
+	Student_Code Number(6),
+	Staff_code Number(8),
+	Book_Issue_date Date,
+	Book_expected_return_Date Date,
+	Book_actual_return_Date Date,
+	CONSTRAINT BookTrans_BOOKCode_FK FOREIGN KEY (Book_code) REFERENCES Book_Master(Book_code),
+  CONSTRAINT BookTrans_stdCode_FK FOREIGN KEY (Student_Code) REFERENCES Student_Master(Student_Code),
+  CONSTRAINT BookTrans_staffCode_FK FOREIGN KEY (Staff_code) REFERENCES Staff_Master(Staff_code)
+);
