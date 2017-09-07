@@ -1,2 +1,2 @@
-# DBMS_Lab
+# Assigments
 Lab Assignments
