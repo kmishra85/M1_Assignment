@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+<TITLE>EMI INFORMATION</TITLE>
+<script src="emi.js" type="text/javascript"></script>
+</head>
+<BODY>
+	<center><h2>EMI Application Form</h2><center>
+<form name="form1" background-color='yellow'>					
+<TABLE BORDER="1" ALIGN='CENTER' bordercolor='orange' bgcolor='grey'>
+<TR>
+	<TD>
+	Customer A/c No:*
+	</TD>
+	<TD><input type="text"  maxlength=15 PLACEHOLDER="Enter Account Number"  name="cno"REQUIRED pattern="[0-9]{8}" title="it should contain 10 numbers"/>
+	</TD>
+</TR>
+<TR>
+	<TD>
+	Customer Name:*
+	</TD>
+	<TD><input type="text"  maxlength=15 PLACEHOLDER="Enter only Characters"  title="it should contain 1 captial at first and mini 3 characters"name="cnm"REQUIRED>
+	</TD>
+</TR>
+<tr>
+	<td>Email:*<td><input type="email" name="email"</td>
+	</td>
+</tr>
+
+<TR>
+	<TD>
+		Amount :*<td><input type="NUMBER"   name="amt"REQUIRED/></td>
+	</TD>
+</TR>
+<TR>
+	<TD>
+		Duration :*<td><input type="NUMBER"  maxlength=5  name="dur"REQUIRED/></td>
+	</TD>
+</TR>
+<tr>
+	<td colspan="2" align="center">
+	<input type="submit" name="button" value="Calculate EMI and display" onclick="val()">
+	</td>
+</tr>
