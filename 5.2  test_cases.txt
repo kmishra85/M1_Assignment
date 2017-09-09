@@ -1,0 +1,27 @@
+5.2-
+
+Test_Case_ID					TEST_CASE							Test_Data							Expected Result
+
+	T1						On entering negative 						-3								Year cannot be negative year
+								number		
+								
+	T2						On entering year>40							55								Year of experience cannot>40								
+	
+Test_Case_ID					TEST_CASE							Test_Data							Expected Result
+
+	T1						On entering negative 						-3								Number of employee cannot be
+								number	
+								negative
+	T2						On  not entering no.														Enteries cannot be left blank	
+							of employees,emp_id,emp_type
+							
+	T3						On entering -ve emp_id						-101							emp_id cannot be -ve
+	
+Test_Case_ID					TEST_CASE							Test_Data							Expected Result
+
+	T1						On entering blank space														String1,String2 cannot be negative year
+								for string1	
+								
+	T2						String2 is greater than					String1=test						This is not possible.	
+								String1								String2=testing						String1 Should be > String2
+	
