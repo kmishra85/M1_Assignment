@@ -1,0 +1,45 @@
+/*********************************************************************
+ * File                 : Assignment 3.5
+ * Author Name          : Srishty Saxena
+ * Desc                 : The function must return the number of times the character is found in the word. 
+ * Version              : 
+ * Last Modified Date   : 24-Aug-2017
+ * Change Description   : 
+ *********************************************************************/
+
+BEGIN
+
+DECLARE word AS CHAR ARRAY
+DECLARE character AS CHAR
+DECLARE char_count AS INTEGER
+
+PROMPT "Enter the string" AND STORE IN word
+PROMPT "Enter the character to be searched" AND  STORE IN character
+
+char_count= getCharCount(STRING ARRAY word, CHAR character)
+
+DISPLAY "The no. of occurence is:",char_count
+
+END
+
+/*********************************************************************
+ * Module Name         	: getCharCount()
+ * Input Parameters     : word, character
+ * Return Type         	: CHAR ARRAY
+ * Author              	: Capgemini
+ * Creation Date      	: 24-Aug-2017
+ * Description        	: Count the number of occurence of character in word
+ *********************************************************************/
+INTEGER SUB getCharCount(CHAR ARRAY word, CHAR character)
+
+ DECLARE index AS INTEGER
+ DECLARE CONSTANT count AS 0
+ 
+ FOR INDEX=0 TO not equal to NULL
+ IF(word[index]=character)
+ THEN
+ count=count+1
+ END IF
+ RETRUN count
+ 
+ END SUB

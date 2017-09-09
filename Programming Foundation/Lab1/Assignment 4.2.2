@@ -1,0 +1,53 @@
+/*********************************************************************
+ * File                 : Assignment 4.2
+ * Author Name          : Srishty Saxena
+ * Desc                 : Refactoring with exception
+ * Version              : 
+ * Last Modified Date   : 26-Aug-2017
+ * Change Description   : 
+ *********************************************************************/
+RECORD Employee
+ DECLARE EmpId AS INTEGER
+ DECLARE employementType AS STRING
+END RECORD
+
+ BEGIN 
+  DECLARE emp AS Employee
+  DECLARE leaves, total_leaves, index, no_of_emp, months AS INTEGER 
+  DECLARE CONSTANT permanent_leaves AS 2, contract_leaves AS 1, months AS 12
+
+    PROMPT "Enter the no. of employees" AND STORE IN no_of_emp
+	
+	FOR index=1 TO no_of_emp
+	PROMPT "Enter the employee ID" AND STORE IN emp.EmpId
+	         validate_emp_id(emp.EmpId)
+	PROMPT "Enter the employeeType" AND STORE IN emp.employementType
+	         validate_emp_type(emp.employmentType)
+	
+	END FOR
+	
+  FOR index=1 TO no_of_emp
+  IF (employeeType=='PERMANENT') 
+     THEN
+	   leaves=permanent_leaves
+  ELSE IF(employeeType=='CONTRACT')
+     THEN 
+	    leaves=contract_leaves
+  END IF
+  
+  total_leaves=leaves*months
+  
+  DISPLAY "Employee ID:",emp.EmpId
+  DISPLAY "Total Available leaves are:",total_leaves
+  
+ END FOR
+ 
+ EXCEPTION
+ WHEN validate_emp_id THEN
+  DISPLAY "Employee Id is not valid"
+ WHEN validate_emp_type THEN
+  DISPLAY "employment type is not valid"
+ END EXCEPTION
+ 
+END
+	

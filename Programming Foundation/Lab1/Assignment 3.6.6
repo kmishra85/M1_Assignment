@@ -1,0 +1,97 @@
+/*********************************************************************
+ * File                 : Assignment 3.6
+ * Author Name          : Srishty Saxena
+ * Desc                 :   
+ * Version              : Implement sorting and searching logic in module.
+ * Last Modified Date   : 26-Aug-2017
+ * Change Description   : 
+ *********************************************************************/
+BEGIN 
+  
+     DECLARE index, num first_index, last_index AS INTEGER
+	 DECLARE number[5] AS ARRAY INTEGER
+	 INITIALIZE index1=0, index2=5
+	 
+	 InsertArray(number[5])
+	 sortArray(number[5])
+	 
+	 PROMPT "Enter number to be search" AND STORE IN num
+	  
+	 IF (isNumberFound(number,num,index1,index2))
+	     THEN DISPLAY "Number is present in array"
+	 ELSE
+	     DISPLAY "Number is not present in array"
+END
+
+/*********************************************************************
+ * Module Name         	: InsertArray()
+ * Input Parameters     : ARRAY INTEGER number[]
+ * Return Type         	: Void
+ * Author              	: Srishty Saxena
+ * Creation Date      	: 26-Aug-2017
+ * Description        	: Insering elements into array
+ *********************************************************************/
+SUB InsertArray(ARRAY INTEGER number[])
+
+    DECLARE index AS INTEGER
+	DISPLAY "Enter 5 element of array"
+	  FOR index 0 TO 4
+	    ACCEPT number[index]
+	  END FOR
+	  
+END SUB
+/*********************************************************************
+ * Module Name         	: sortArray()
+ * Input Parameters     : ARRAY INTEGER number[]
+ * Return Type         	: Void
+ * Author              	: Srishty Saxena
+ * Creation Date      	: 26-Aug-2017
+ * Description        	: Sorting elements of array
+ *********************************************************************/
+
+SUB sortArray(ARRAY INTEGER number[])
+    DECLARE index, index2, firstnumber AS INTEGER
+	firstnumber=number[0]
+	
+	FOR index 0 TO 4
+	  FOR index2 1 TO 4
+	       IF(number[index]>number[index2])
+		       firstnumber=number[index1]
+			   number[index1]=number[index]
+			   number[index]=Firstnumber
+			END IF
+			
+		END FOR
+		
+	END FOR
+	
+END SUB
+/*********************************************************************
+ * Module Name         	: isNumberFound()
+ * Input Parameters     : number[],num,first_index,last_index
+ * Return Type         	: Boolean
+ * Author              	: Srishty Saxena
+ * Creation Date      	: 26-Aug-2017
+ * Description        	: Binary Search
+ *********************************************************************/
+
+SUB isNumberFound(ARRAY INTEGER number[], INTEGER num, INTEGER first_index, INTEGER last_index)
+     
+	 DECLARE mid_index AS INTEGER
+	 
+	 CALCULATE mid_index=(first_index+last_index)/2
+	 
+	 IF(num==number[mid_index])
+	    RETURN TRUE
+	 ELSE IF(number[mid_index]<num)
+	   THEN
+	   first_index=mid_index
+	   isNumberFound(number,num,first_index,last_index)
+	ELSE IF(number[mid_index]>num)
+	   THEN
+	   last_index=mid_index
+	   isNumberFound(number,num,first_index,last_index)
+	ELSE
+	     RETURN FALSE
+	END IF
+END SUB

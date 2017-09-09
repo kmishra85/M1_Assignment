@@ -1,0 +1,40 @@
+/*********************************************************************
+ * File                 : Assignment 4.3
+ * Author Name          : Srishty Saxena
+ * Desc                 :Pseudocode to compare substring and match it.
+ * Version              : 
+ * Last Modified Date   : 26-Aug-2017
+ * Change Description   : 
+ *********************************************************************/
+ 
+ BEGIN
+ 
+  DECLARE price, quantity AS INTEGER
+  
+  PROMPT "Enter price of your product" AND STORE IN price
+  IF(isValid(price))THEN
+     PROMPT "Enter the quantity of your product" AND STORE IN quantity
+	 IF(isValid(quantity))THEN
+	    applyTotalCost(price,quantity)
+	ELSE
+	    DISPLAY "Quantity should contain numbers"
+	END IF
+	   DISPLAY "Price should contain numbers"
+	END IF
+	END
+	
+	
+SUB applyTotalCost(INTEGER price, INTEGER quantity)
+  
+  DECLARE total_cost AS DECIMAL
+  DECLARE CONSTANT tax_rate AS 0.56
+  
+  total_cost=price*quantity*0.56
+  
+  DISPLAY "Total price of product is:",total_cost
+  
+  EXCEPTION
+   WHEN NoSuchElement THEN
+    DISPLAY
+	
+ 
