@@ -33,4 +33,60 @@ Your age is 23.8
 	Procedure should return the following – Staff_Code, Staff_Name, 
 	Dept_Code and Manager Name.
 	
+	
+3.3. Write a function to compute the following.
+Function should take Staff_Code and return the cost to company.
+DA = 15% Salary, HRA= 20% of Salary, TA= 8% of Salary.
+Special Allowance will be decided based on the service in the company.
+< 1 Year Nil
+>=1 Year< 2 Year 10% of Salary
+>=2 Year< 4 Year 20% of Salary
+>4 Year 30% of Salary
+
+
+SET serveroutput ON;
+
+DECLARE 
+	s_code  staff_master.staff_code%TYPE:=&s_code;
+	exp number(3);
+	s_sal  staff_master.staff_sal%TYPE;
+	a1 number(7);
+	sa number(7);
+	da number(7);
+	hra number(7);
+	ta number(7);
+
+ function CTCompany (v_staff in staff_master.staff_code%TYPE) 
+	RETURN number is 
+	sum1 number(7);
+        
+	BEGIN 
+		Select (sysdate-hiredate)/365,staff_sal 
+		INTO exp,s_sal 
+		FROM staff_master
+		WHERE staff_code=s_code;
+  
+	IF(exp<1) then
+		sa:=0;
+	ELSIF(exp<2) then
+		sa:=((10*s_sal)/100);
+	ELSIF(exp<4) then
+		sa:=((20*s_sal)/100);
+	ELSE
+		sa:=((30*s_sal)/100);
+	END IF;
+  
+	da:=((15*s_sal)/100);
+	hra:=((20* s_sal)/100);
+	ta:=((8*s_sal)/100);
+	sum1:=(sa+da+hra+ta);
+  
+	RETURN sum1;
+ END;
+ 
+BEGIN 
+	a1:=CTCompany(s_code);
+	dbms_output.put_line('Sum is ' || a1);
+END;
+/
 
